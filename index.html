@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Time Converter SF Tokyo</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/time.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/date.js"></script>
+    <script src="js/time.js"></script>
+  </head>
+  <body>
+    <div id="board">
+      <form>
+        <div class="form-group">
+          <label for="sf-time">San Fransisco</label>
+          <input type="time" class="form-control" id="time-sf"> 
+        </div>
+        <div class="form-group">
+          <label for="tokyo-time">Tokyo</label>
+          <input type="time" class="form-control" id="time-tokyo"> 
+        </div>
+      </form>
+    </div> 
+    <script>
+     $(function(){
+        <!-- var timezoneJS = require('./js/date'); -->
+        var dt = new timezoneJS.Date('10/31/2008', 'Japan');
+        function convert(num){
+          if ( num < 10){
+            return "0" + num;
+          }
+          return num;
+        }
+        
+        function calcTime(offset){
+          var d = new Date();
+          var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+          var nd = new Date(utc - (3600000*offset));
+          return convert(nd.getHours()) + ":" + convert(nd.getMinutes());
+        }
+        var sf = new Date();
+        var sfTime = convert(sf.getHours()) +":" + convert(sf.getMinutes());
+        $("#time-sf").val(sfTime);
+
+        var tokyo = calcTime(9);
+        $("#time-tokyo").val(tokyo);
+      });
+     
+      
+    </script>
+  </body>
+</html>
