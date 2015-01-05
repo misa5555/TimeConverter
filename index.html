@@ -16,14 +16,14 @@
   <body>
     <div id="title">Time converter SF Tokyo Guatemala</div>
     <div id="board">
-      <p>hit tab key after entering the time</p>
+      <h4>hit tab key after entering the time</h4>
       <form>
         <div class="form-group">
           <label for="sf-time">San Fransisco</label>
           <input type="text" class="form-control sf" id="sf-tokyo"> 
         </div>
         <div class="form-group">
-          <label for="tokyo-time">Tokyo</label>
+          <label for="tokyo-time">Tokyo(+17hrs)</label>
           <input type="text" class="form-control" id="tokyo"> 
         </div>
         <div class="form-group">
@@ -31,7 +31,7 @@
           <input type="text" class="form-control sf" id="sf-guatemala"> 
         </div>
         <div class="form-group">
-          <label for="guatemala-time">Guatemala</label>
+          <label for="guatemala-time">Guatemala(+2hrs)</label>
           <input type="text" class="form-control" id="guatemala"> 
         </div>
       </form>
@@ -46,7 +46,7 @@
         var tokyo = sfToTokyo(sfTime); 
         $("#tokyo").val(tokyo);
         
-        var guatemala = calcTime(2);
+        var guatemala = sfToGuatemala(sfTime) 
         $("#guatemala").val(guatemala);
         
         $("input").on("keydown", function(){
